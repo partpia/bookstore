@@ -36,7 +36,7 @@ public class BookController {
 		return "addbook";	// addbook.html
 	}
 	
-	// save book
+	// save / update book
 	@PostMapping("/save")
 	public String saveBook(@ModelAttribute Book book) {
 		bookRepository.save(book);
@@ -55,12 +55,5 @@ public class BookController {
 	public String editBook(@PathVariable("id") Long bookId, Model model) {
 		model.addAttribute("book", bookRepository.findById(bookId));
 		return "editbook";	// editbook.html
-	}
-	
-	// update book
-	@PostMapping("/update")
-	public String updateBook(@ModelAttribute Book book) {
-		bookRepository.save(book);
-		return "redirect:/booklist";
 	}
 }
