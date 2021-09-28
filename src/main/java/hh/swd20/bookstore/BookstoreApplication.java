@@ -27,15 +27,17 @@ public class BookstoreApplication {
 		return (args) -> {
 			
 			log.info("Save a couple of categories");
-			
-			categoryRepository.save(new Category("Crafts"));
-			categoryRepository.save(new Category("Sports"));
-			categoryRepository.save(new Category("Poetry"));
+			Category category1 = new Category("Technology");
+			categoryRepository.save(category1);
+			Category category2 = new Category("Sports");
+			categoryRepository.save(category2);
+			Category category3 = new Category("Crime");
+			categoryRepository.save(category3);
 			
 			log.info("Save a few of books");
-			bookRepository.save(new Book("Clean Code", "Robert C. Martin", 2008, "9780132350884", 40.40));
-			bookRepository.save(new Book("Knitting Know-How", "Peters Ryland", 2020, "9781782498278", 12.95));
-			bookRepository.save(new Book("Understanding the Golf Swing", "Carol Mann", 2018, "9781510725973", 16.95));
+			bookRepository.save(new Book("Clean Code", "Robert C. Martin", 2008, "9780132350884", 40.40, category1));
+			bookRepository.save(new Book("The Kingdom", "Jo Nesbo", 2021, "9781784709105", 12.90, category3));
+			bookRepository.save(new Book("Understanding the Golf Swing", "Carol Mann", 2018, "9781510725973", 16.95, category2));
 			
 			log.info("Fetch all the categories");
 			for (Category category : categoryRepository.findAll()) {
