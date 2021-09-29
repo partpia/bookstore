@@ -10,12 +10,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import hh.swd20.bookstore.domain.Book;
 import hh.swd20.bookstore.domain.BookRepository;
+import hh.swd20.bookstore.domain.CategoryRepository;
 
 @Controller
 public class BookController {
 	
 	@Autowired
 	private BookRepository bookRepository;
+	@Autowired
+	private CategoryRepository categoryRepository;
 	
 	// welcome-message
 	@GetMapping("/index")
@@ -33,6 +36,7 @@ public class BookController {
 	@GetMapping("/newbook")
 	public String createNewBook(Model model) {
 		model.addAttribute("book", new Book());
+		model.addAttribute("categories", categoryRepository.findAll());
 		return "addbook";	// addbook.html
 	}
 	
