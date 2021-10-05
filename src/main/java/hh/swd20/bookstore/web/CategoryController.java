@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import hh.swd20.bookstore.domain.Category;
 import hh.swd20.bookstore.domain.CategoryRepository;
 
+// @CrossOrigin
 @Controller
 public class CategoryController {
 	

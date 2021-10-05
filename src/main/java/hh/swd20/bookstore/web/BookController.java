@@ -1,5 +1,8 @@
 package hh.swd20.bookstore.web;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,11 +10,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import hh.swd20.bookstore.domain.Book;
 import hh.swd20.bookstore.domain.BookRepository;
 import hh.swd20.bookstore.domain.CategoryRepository;
 
+// @CrossOrigin
 @Controller
 public class BookController {
 	
@@ -25,6 +30,19 @@ public class BookController {
 	public String helloUser() {
 		return "index";		// index.html
 	}
+	
+	// REST: returns all books
+	@GetMapping("/books")
+	public @ResponseBody List<Book> getAllBooksRest() {
+		return (List<Book>) bookRepository.findAll();
+	}
+	
+	// REST: find by id
+	@GetMapping("/books/{id}")
+	public @ResponseBody Optional<Book> getByIdRest(@PathVariable(value = "id") Long bookId) {
+		return bookRepository.findById(bookId);
+	}
+	
 	// all books from the database
 	@GetMapping("/booklist")
 	public String getAllBooks(Model model) {
