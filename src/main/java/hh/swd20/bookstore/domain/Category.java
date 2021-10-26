@@ -32,7 +32,7 @@ public class Category {
 		this.name = name;
 	}
 
-	public void setId(Long categoryId) {
+	public void setCategoryId(Long categoryId) {
 		this.categoryId = categoryId;
 	}
 
@@ -40,8 +40,8 @@ public class Category {
 		this.name = name;
 	}
 	
-	public List<Book> getBooks() {
-		return books;
+	public void setBooks(List<Book> books) {
+		this.books = books;
 	}
 
 	public Long getCategoryId() {
@@ -52,8 +52,8 @@ public class Category {
 		return name;
 	}
 	
-	public void setBooks(List<Book> books) {
-		this.books = books;
+	public List<Book> getBooks() {
+		return books;
 	}
 
 	@Override
